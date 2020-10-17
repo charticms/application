@@ -1,0 +1,38 @@
+#!usr/bin/env php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use Charti\Core\Kernel\Application;
+use App\Console\Application as ConsoleApplication;
+use Symfony\Component\Console\Application as SymfonyApplication;
+
+/**
+ * Redefine all the system constants
+ */
+define('DS', DIRECTORY_SEPARATOR);
+define('VERSION', '1.0');
+define('MIGRATION_NUMBER', 220);
+
+define('PATH', __DIR__ . DS);
+define('APP', PATH . 'anchor' . DS);
+define('SYS', PATH . 'system' . DS);
+define('PLUG', PATH . 'plugins' . DS);
+define('CORE_ASSETS', PATH . 'public/core/assets/');
+define('CACHE_PATH', PATH . 'storage/cache' . DS);
+define('EXT', '.php');
+
+$app = new Application;
+
+define('CORE_VERSION', $app->version());
+define('ROOT', $app->root());
+define('DOC_ROOT', $app->docRoot());
+define('BASE_FOLDER', $app->baseFolder());
+define('APP_ENV', strtolower(config('app.env')));
+define('ADMIN_FOLDER', trim(config('app.admin'), '/'));
+define('ASSETS_FOLDER', trim(config('app.assets'), '/'));
+
+date_default_timezone_set(config('app.timezone'));
+
+$console = new ConsoleApplication(new SymfonyApplication("Running on version " . CORE_VERSION), $app);
+$console->run();
