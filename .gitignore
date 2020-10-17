@@ -3,7 +3,10 @@ Thumbs.db
 .DS_Store
 .env
 
-/public/*
+# Ignore temporary
+app/Dashboard
+
+/public/*/
 /resources/*
 /themes/*
 /storage/*
