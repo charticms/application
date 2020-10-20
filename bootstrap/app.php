@@ -6,7 +6,7 @@ require PATH . 'system/helpers' . EXT;
 use Charti\Core\{
     Support\Autoloader,
     Kernel\Application,
-    Kernel\RegistryLoader,
+    Kernel\RegistryRuntime,
     Database\DatabaseWatcher,
 };
 
@@ -51,9 +51,10 @@ if( ! $dbConnection->checkDatabaseConnection() ) {
  * Collects data in Registry for later use
  * @todo make Registry collect and store data on disk in flat arrays for quick response
  */
-// $registry = new RegistryLoader();
-// $registry->call();
+(new RegistryRuntime)->call();
+
 Session::start();
+
 
 /**
  * Start the application
