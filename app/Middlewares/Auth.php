@@ -13,9 +13,10 @@ class Auth implements MiddlewareInterface
      *
      * @return mixed
      */
-    public function handle() : bool
+    public function handle()
     {
         if( ! AuthGuard::admin() ) {
+            // return false;
             return redirect('dashboard/auth');
         }
 
