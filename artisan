@@ -15,6 +15,7 @@ define('VERSION', '1.0');
 define('MIGRATION_NUMBER', 220);
 
 define('PATH', __DIR__ . DS);
+define('PUBLIC_PATH', PATH . DS . 'public');
 define('APP', PATH . 'anchor' . DS);
 define('SYS', PATH . 'system' . DS);
 define('PLUG', PATH . 'plugins' . DS);
