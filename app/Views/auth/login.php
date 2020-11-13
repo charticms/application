@@ -29,12 +29,13 @@
 
                     <div class="form-group">
                       <label for="label-pass"><?php echo __('users.password'); ?>:</label>
-                        <?php echo Form::password('pass', [
+                        <?php echo Form::password('pass', null, [
                             'id'           => 'pass',
                             'class'        => 'form-control',
                             'placeholder'  => __('users.password'),
                             'autocomplete' => 'off',
                             'required' => 'required'
+                            
                         ]); ?>
                     </div>
 
