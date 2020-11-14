@@ -1,14 +1,12 @@
 <?php
 
 require PATH . 'vendor/autoload' . EXT;
-require PATH . 'system/helpers' . EXT;
-
 use Charti\Core\{
     Support\Autoloader,
-    Kernel\Application,
-    Kernel\RegistryRuntime,
+    Kernel\Application, Kernel\RegistryRuntime,
     Database\DatabaseWatcher,
 };
+
 
 // Register the autoloader
 spl_autoload_register([Autoloader::class, 'load']);
@@ -19,6 +17,7 @@ spl_autoload_register([Autoloader::class, 'load']);
 /**
  * Initialize the Application
  */
+
 $app = new Application;
 
 define('CORE_VERSION', $app::VERSION);
@@ -33,16 +32,15 @@ date_default_timezone_set(config('app.timezone'));
 /*
  * Set autoload directories to include your app models and libraries
  */
-Autoloader::directory([
-    APP . 'libraries',
-]);
+// Autoloader::directory([
+//     APP . 'libraries',
+// ]);
 
 /**
  * Try database connection with given credentials.
  * @see .env file in the root of your project 
  */
-$dbConnection = new DatabaseWatcher;
-if( ! $dbConnection->checkDatabaseConnection() ) {
+if( ! (new DatabaseWatcher)->checkDatabaseConnection() ) {
     $app->start(APP_ENV, $installation = true);
     exit;
 }
@@ -53,8 +51,10 @@ if( ! $dbConnection->checkDatabaseConnection() ) {
  */
 (new RegistryRuntime)->call();
 
+/**
+ * Force creation of the session
+ */
 Session::start();
-
 
 /**
  * Start the application
