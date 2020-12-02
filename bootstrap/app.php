@@ -1,23 +1,43 @@
 <?php
 
+/**
+ * This is the bootstrap application file that puts your Chartí instance on and running.
+ * 
+ * Chartí CMS and all its products are fully open-source and
+ * released under multiple licenses.
+ *
+ * 
+ * The Application Directory - What is yours is yours.
+ * @license Unlicensed.
+ * @author  Your & Your company/team
+ * 
+ * Anything related to the projects instance stays in /app directory and is yours, fully non licensed.
+ * The API provided can be used without any costs 
+ * 
+ * 
+ * Anything related to Chartí CMS packages and products are released under AGPL license, and
+ * by using Chartí you agree with the license terms and conditions but also with our guidelines.
+ * @license  AGPL
+ * @author  George Lemon & Chartí CMS <hi@charti.dev>
+ *
+ *
+ * Vendor licenses and terms of use.
+ * The Vendor packages required by Chartí CMS are released under MIT license
+ * @license  MIT
+ * @author   Multiple awesome Authors (for full list please see the composer.json in root of the project).
+ * 
+ * 
+ * @see  https://charti.dev
+ * @author George Lemon 
+ */
+
 require PATH . 'vendor/autoload' . EXT;
-use Charti\Core\{
-    Support\Autoloader,
-    Kernel\Application, Kernel\RegistryRuntime,
-    Database\DatabaseWatcher,
-};
 
-
-// Register the autoloader
-spl_autoload_register([Autoloader::class, 'load']);
-// set_exception_handler(['System\\Error', 'exception']);
-// set_error_handler(['System\\Error', 'native']);
-// register_shutdown_function(['System\\Error', 'shutdown']);
+use Charti\Core\{Kernel\Application, Kernel\RegistryRuntime, Database\DatabaseWatcher};
 
 /**
  * Initialize the Application
  */
-
 $app = new Application;
 
 define('CORE_VERSION', $app::VERSION);
@@ -28,13 +48,6 @@ define('APP_ENV', strtolower(config('app.env')));
 define('ADMIN_FOLDER', trim(config('app.admin'), '/'));
 define('ASSETS_FOLDER', trim(config('app.assets'), '/'));
 date_default_timezone_set(config('app.timezone'));
-
-/*
- * Set autoload directories to include your app models and libraries
- */
-// Autoloader::directory([
-//     APP . 'libraries',
-// ]);
 
 /**
  * Try database connection with given credentials.
