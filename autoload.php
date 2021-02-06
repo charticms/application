@@ -11,11 +11,15 @@ define('ENV', getenv('APP_ENV'));
 define('VERSION', '1.0');
 
 define('PATH', __DIR__ . DS);
+// Shared path is useful when you have multiple projects developed with Charti,
+// all under the same server. So instead installing same vendors multiple times
+// you can share the default vendors between applications.
+define('SHARED_PATH', PATH);
 define('APP', PATH . 'anchor' . DS);
 define('SYS', PATH . 'system' . DS);
 define('PLUG', PATH . 'plugins' . DS);
 define('CORE_ASSETS', PATH . 'public/core/assets/');
-define('CACHE_PATH', PATH . 'storage/cache' . DS);
+define('CACHE_PATH', PATH . 'bootstrap/storage/cache' . DS);
 define('EXT', '.php');
 
 /**

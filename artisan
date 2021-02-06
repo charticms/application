@@ -18,6 +18,7 @@ define('PATH', __DIR__ . DS);
 // While in blindmode (Artisan Console) we don't need the real public path,
 // but will overwrite the PUBLIC_PATH value with the root path.
 define('PUBLIC_PATH', PATH);
+define('SHARED_PATH', PATH);
 define('APP', PATH . 'anchor' . DS);
 define('SYS', PATH . 'system' . DS);
 define('PLUG', PATH . 'plugins' . DS);

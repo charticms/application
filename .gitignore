@@ -7,17 +7,14 @@ Thumbs.db
 app/Dashboard
 
 /public/*/
-/resources/*
+/bootstrap/resources/*
 /themes/*
-/storage/*
+/bootstrap/storage/*
 
 # uploaded content
 public/media/*
 !/public/media/index.php
 
-
 # Composer vendor
 vendor/
-
-# Don't want to commit .lock files
 *.lock
